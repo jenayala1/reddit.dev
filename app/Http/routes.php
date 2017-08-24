@@ -20,3 +20,9 @@ Route::get('/add/{num1}/{num2}', 'HomeController@add');
 // Optional parameter w/ default value
 Route::get('/sayhello/{name?}', 'HomeController@sayHello');
 Route::get('/rolldice/{guess}', 'HomeController@rolldice');
+
+Route::get('sample/{str}','SampleController@firstLetter');
+Route::get('/process/{num}', 'SampleController@processNum');
+Route::get('/double/{num}', 'SampleController@doubleNum');
+Route::get('/triple/{num}', 'SampleController@tripleNum');
+Route::get('/zero/{num}', 'HomeController@resetToZero');
