@@ -8,13 +8,24 @@
 @section("content")
 
     <main class="container">
-        <h1> Add a Post </h1>
+        <h1> Create a Post </h1>
         <form method="POST" action="{{ action('PostsController@store') }}">
             {!! csrf_field() !!}
-            <input type="text" id="title" name="title" placeholder="Post Title">
-            <input type="textarea" id="content" name="content" rows="5" cols="40" placeholder="Enter Content"></textarea>
-            <input type="text" id="url" name="url" placeholder="Enter URL">
-            <button> Submit </button>
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title" value="{{ old('title') }}"placeholder="Post Title">
+            </div>
+            <div class="form-group">
+                <label for="url"> URL </label>
+                <input type="text" id="url" name="url" value="{{ old('url') }}" placeholder="Enter URL">
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="title">Content </label>
+                <input type="textarea" id="content" name="content"  value="{{ old('content' ) }}" placeholder="Enter Content"></textarea>
+            </div>
+            <br>
+            <button class='btn btn-success'> Submit </button>
         </form>
     </main>
 

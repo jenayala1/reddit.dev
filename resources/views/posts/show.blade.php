@@ -8,6 +8,7 @@
 @section("content")
 
     <main class="container">
+
         <h2>{{ $post->title }}</h2>
     	<div>{{ $post->content }}</div>
     	<div>{{ $post->url }}</div>

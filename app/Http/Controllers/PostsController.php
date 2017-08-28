@@ -29,6 +29,7 @@ class PostsController extends Controller
     public function create()
     {
         return view('posts.create');
+
     }
 
     /**
@@ -39,8 +40,10 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        $post = new \App\Models\Post();
-        $post->title = $request->title;
+            //dd($request->all());
+            return back()->withInput();
+            //  $post = new \App\Models\Post();
+            // $post->title = $request->title;
     }
 
     /**
@@ -51,8 +54,8 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        $post = \App\Models\Post::find($id);
-       return view('posts.show', ['post' => $post]);
+            $data["id"] = $id;
+           return view('posts.index', $data);
     }
 
     /**
@@ -63,8 +66,8 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        $data["id"] = $id;
-       return view('posts.edit', $data);
+
+       return view('posts.edit');
     }
 
     /**
@@ -76,7 +79,16 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return back()->withInput();
+        // $post->title = $request->title;
+        // $post->content = $request->content;
+        // $post->url = $request->url;
+        // $post->created_by = $request->created_by;
+        // $post->save();
+        // $data = [];
+        // $data['post'] = $post;
+
+        dd("update ran");
+        // return back()->withInput();
     }
 
     /**
@@ -87,8 +99,9 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        $post = \App\Models\Post::find($id);
+        // $post = \App\Models\Post::find($id);
 		$post->delete();
 		return redirect()->action('PostsController@index');
+        echo "Post successfully deleted!";
     }
 }

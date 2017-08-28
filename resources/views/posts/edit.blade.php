@@ -8,12 +8,17 @@
 @section("content")
 
     <main class="container">
-        <h1> Add a Post </h1>
+        <h1> Edit Post </h1>
         <form method="POST" action="{{ action('PostsController@update', array(1)) }}">
             {!! csrf_field() !!}
             <div class="form-group">
-                <label for="title">Title</label>
-                <input type="text" id="title" name="title" class="form-control" value="{{ old('title') }}" placeholder="Post Title">
+                <div>
+                    <label for="id"> Post ID </label>
+                    <input type="int" id="id" name="post_id" class="form-control" value="{{ old('id') }}">
+                </div>
+                <div>
+                    <label for="title">Title</label>
+                    <input type="text" id="title" name="title" class="form-control" value="{{ old('title') }}" placeholder="Post Title">
             </div>
             <div class="form-group">
                 <label for="title">Content </label>
@@ -23,11 +28,15 @@
                 <label for="url"> URL </label>
                 <input type="text" id="url" name="url" class="form-control" value="{{ old('url') }}" placeholder="Enter URL">
             </div>
-           <button type="submit" class="btn btn-default" value="edit post"> SUBMIT </button>
-	          {{ method_field('PUT') }}
+             {{ method_field('PUT') }}
+           <button type="submit" class="btn btn-success" value="edit post"> SUBMIT </button>
+
+          </div>
        </form>
-        <form method="POST" action="{{ action('PostsController@destroy', array(1)) }}">
-        	<input type="submit" class="btn btn-default" value="Delete post">
+       <br>
+        <form method="DELETE" action="{{ action('PostsController@destroy', array(1)) }}">
+                {!! csrf_field() !!}
+        	<button class="btn btn-danger" value="delete post">DELETE </button>
         	{{ method_field('DELETE') }}
         </form>
     </main>
