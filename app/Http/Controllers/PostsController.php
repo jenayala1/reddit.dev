@@ -16,9 +16,9 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $data = [];
-        $data['posts'] = $posts;
-        return view('posts.index', $data);
+            $posts = \App\Models\Post::all();
+            $data['posts'] = $posts;
+            return view('posts.index', $data);
     }
 
     /**
@@ -41,11 +41,17 @@ class PostsController extends Controller
     public function store(Request $request)
     {
             //dd($request->all());
-            return back()->withInput();
-            //  $post = new \App\Models\Post();
-            // $post->title = $request->title;
-    }
+            // use later for validation:
+            //return back()->withInput();
+             $post = new \App\Models\Post();
+            $post->title = $request->title;
+            $post->url = $request->url;
+            $post->content = $request->content;
+            $post->created_by = 1;
+            $post->save();
 
+            return \Redirect::action('PostsController@index');
+}
     /**
      * Display the specified resource.
      *
@@ -54,8 +60,9 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-            $data["id"] = $id;
-           return view('posts.index', $data);
+        $post = \App\Models\Post::find($id);
+        $data['post'] = $post;
+         return view('posts.show', $data);
     }
 
     /**
@@ -66,8 +73,9 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-
-       return view('posts.edit');
+        $post = \App\Models\Post::find($id);
+        $data['post'] = $post;
+         return view('posts.edit', $data);
     }
 
     /**
@@ -79,16 +87,18 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $post->title = $request->title;
-        // $post->content = $request->content;
-        // $post->url = $request->url;
-        // $post->created_by = $request->created_by;
-        // $post->save();
         // $data = [];
         // $data['post'] = $post;
+        $posts =  App\Models\Post::find($id);
+        $post->title = $request->title;
+        $post->content = $request->content;
+        $post->url = $request->url;
+        $post->created_by = 2;
+         $post->save();
 
-        dd("update ran");
-        // return back()->withInput();
+        //dd("update ran");
+        //return back()->withInput();
+        return \Redirect::action('PostsController@show', $post->id);
     }
 
     /**
@@ -99,9 +109,9 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        // $post = \App\Models\Post::find($id);
+        $post = \App\Models\Post::find($id);
 		$post->delete();
-		return redirect()->action('PostsController@index');
-        echo "Post successfully deleted!";
+		return \Redirect::action('PostsController@index');
+        // echo "Post successfully deleted!";
     }
 }
