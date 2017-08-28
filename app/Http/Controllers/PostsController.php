@@ -16,7 +16,9 @@ class PostsController extends Controller
      */
     public function index()
     {
-        return "Showing All posts";
+        $data = [];
+        $data['posts'] = $posts;
+        return view('posts.index', $data);
     }
 
     /**
@@ -37,7 +39,8 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        var_dump($request->all());
+        $post = new \App\Models\Post();
+        $post->title = $request->title;
     }
 
     /**
@@ -48,7 +51,8 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        return "Show a specific post";
+        $post = \App\Models\Post::find($id);
+       return view('posts.show', ['post' => $post]);
     }
 
     /**
@@ -59,7 +63,8 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        return "Show a form to edit a specific post";
+        $data["id"] = $id;
+       return view('posts.edit', $data);
     }
 
     /**
@@ -71,7 +76,7 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return "Edit a specific post";
+        return back()->withInput();
     }
 
     /**
@@ -82,6 +87,8 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        return " Delete a specific post";
+        $post = \App\Models\Post::find($id);
+		$post->delete();
+		return redirect()->action('PostsController@index');
     }
 }
