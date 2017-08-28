@@ -10,6 +10,13 @@
 
     </head>
     <body>
+        @if (session()->has('successMessage'))
+            <div class="alert alert-success">{{ session('successMessage') }}</div>
+        @endif
+
+        @if (session()->has('errorMessage'))
+            <div class="alert alert-error">{{ session('errorMessage') }}</div>
+        @endif
         @yield('content')
 
         <footer>

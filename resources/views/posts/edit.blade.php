@@ -13,20 +13,22 @@
             {!! csrf_field() !!}
             <div class="form-group">
                 <div>
+                    {!! $errors->first('title', '<span class="help-block">:message</span>') !!}
                     <label for="title">Title</label>
                     <input type="text" id="title" name="title" class="form-control" value="{{ $post->title }}" placeholder="Post Title">
             </div>
             <div class="form-group">
+                {!! $errors->first('content', '<span class="help-block">:message</span>') !!}
                 <label for="title">Content </label>
                 <input type="textarea" id="content" name="content" class="form-control" value="{{ $post->content  }}" placeholder="Enter Content">
             </div>
             <div class="form-group">
+                {!! $errors->first('url', '<span class="help-block">:message</span>') !!}
                 <label for="url"> URL </label>
                 <input type="text" id="url" name="url" class="form-control" value="{{ $post->url }}" placeholder="Enter URL">
             </div>
              {{ method_field('PUT') }}
            <button type="submit" class="btn btn-success" value="edit post"> SUBMIT </button>
-
           </div>
        </form>
        <br>

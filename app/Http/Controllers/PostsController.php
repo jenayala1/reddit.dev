@@ -17,15 +17,17 @@ class PostsController extends Controller
     public function index()
     {
             $posts = \App\Models\Post::all();
+            //paginate
+            $posts = \App\Models\Post::paginate(3);
             $data['posts'] = $posts;
             return view('posts.index', $data);
     }
 
     /**
      * Show the form for creating a new resource.
-     *
      * @return \Illuminate\Http\Response
      */
+
     public function create()
     {
         return view('posts.create');
@@ -40,16 +42,15 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-            //dd($request->all());
-            // use later for validation:
-            //return back()->withInput();
+
+            $this->validate($request, \App\Models\Post::$rules);
              $post = new \App\Models\Post();
             $post->title = $request->title;
             $post->url = $request->url;
             $post->content = $request->content;
             $post->created_by = 1;
             $post->save();
-
+            $request->session()->flash("sucessMessage", "Your post was saved sucessfully");
             return \Redirect::action('PostsController@index');
 }
     /**
@@ -87,17 +88,15 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $data = [];
-        // $data['post'] = $post;
+
+        $this->validate($request, \App\Models\Post::$rules);
         $posts =  App\Models\Post::find($id);
         $post->title = $request->title;
         $post->content = $request->content;
         $post->url = $request->url;
-        $post->created_by = 2;
+        $post->created_by ="";
          $post->save();
-
-        //dd("update ran");
-        //return back()->withInput();
+         $request->session()->flash("sucessMessage", "Your post was updated sucessfully");
         return \Redirect::action('PostsController@show', $post->id);
     }
 
@@ -107,11 +106,11 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         $post = \App\Models\Post::find($id);
 		$post->delete();
+         $request->session()->flash("sucessMessage", "Your post was deleted sucessfully");
 		return \Redirect::action('PostsController@index');
-        // echo "Post successfully deleted!";
     }
 }

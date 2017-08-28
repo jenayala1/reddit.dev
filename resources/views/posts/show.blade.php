@@ -9,10 +9,11 @@
     <main class="container">
             <h2>{{ $post->title }}</h2>
         	<div>{{ $post->content }}</div>
-        	<div>{{ $post->url }}</div>
-        	<div>Created by: {{ $post->created_by }}</div>
-            <div>Date Created: {{ $post->created_at }}</div>
-            <div>Date Updated {{ $post->updated_at }}</div>
+        	<div>URL: {{ $post->url }}</div>
+            <div>CREATED BY USER ID: {{ $post->id }}</div>
+            <div>DATE CREATED:  {{ $post->created_at->setTimezone('America/Chicago')->format('l, F jS Y @ h:i:s A') }}</div>
+            <div>DATE UPDATED: {{ $post->updated_at->setTimezone('America/Chicago')->format('l, F jS Y @ h:i:s A') }}</div>
+            {!! $posts->render() !!}
         </form>
     </main>
 

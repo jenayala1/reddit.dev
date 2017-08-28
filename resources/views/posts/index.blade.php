@@ -8,12 +8,16 @@
 @section("content")
 
     <main class="container">
+        <h1> My Posts </h1>
         @foreach($posts as $post)
         <h2><a  href="{{ action('PostsController@show', $post->id) }}">{{ $post->title }}</a></h2>
-        	<div>{{ $post->content }}</div>
- 			<div>{{ $post->url }}</div>
- 			<div>{{ $post->created_by }}</div>
+        <div>{{ $post->content }}</div>
+        <div>URL: {{ $post->url }}</div>
+        <div>CREATED BY USER ID: {{ $post->id }}</div>
+        <div>DATE CREATED:  {{ $post->created_at->setTimezone('America/Chicago')->format('l, F jS Y @ h:i:s A') }}</div>
+        <div>DATE UPDATED: {{ $post->updated_at->setTimezone('America/Chicago')->format('l, F jS Y @ h:i:s A') }}</div>
   	     @endforeach
+         {!! $posts->render() !!}
         </form>
     </main>
 @stop

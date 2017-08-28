@@ -34,8 +34,14 @@ Route::get('/zero/{num}', 'HomeController@resetToZero');
 
 Route::resource('dogs', 'DogsController');
 
+Route::get('create-user', function() {
+    $user = new \App\User();
+ 	$user->name = "admin";
+ 	$user->email = "admin@codeup.com";
+ 	$user->password = "password";
+ 	$user->save();
 
-
+});
 
 Route::get('orm-test', function ()
 {
