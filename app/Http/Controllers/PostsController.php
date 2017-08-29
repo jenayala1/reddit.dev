@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use Log;
 
 class PostsController extends Controller
 {
@@ -22,6 +23,7 @@ class PostsController extends Controller
             //paginate
             $posts = Post::paginate(3);
             $data['posts'] = $posts;
+            Log::info('Page visited by a user');
             return view('posts.index', $data);
     }
 
@@ -53,6 +55,7 @@ class PostsController extends Controller
             $post->created_by = 1;
             $post->save();
             $request->session()->flash("sucessMessage", "Your post was saved sucessfully");
+            Log::info($post);
             return \Redirect::action('PostsController@index');
 }
     /**
@@ -63,9 +66,11 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        $post = Post::find($id);
+        $post = Post::findOrFail($id);
+
         $data['post'] = $post;
-         return view('posts.show', $data);
+        Log::info('Blogs viewed');
+        return view('posts.show', $data);
     }
 
     /**
@@ -77,6 +82,10 @@ class PostsController extends Controller
     public function edit($id)
     {
         $post = Post::find($id);
+        if (!$post) {
+            abort(404);
+            Log::error ("Invalid Page");
+        }
         $data['post'] = $post;
          return view('posts.edit', $data);
     }
@@ -93,12 +102,17 @@ class PostsController extends Controller
 
         $this->validate($request, Post::$rules);
         $post =  Post::find($id);
+        if (!$post) {
+            abort(404);
+            Log::error ("Invalid Page");
+        }
         $post->title = $request->title;
         $post->content = $request->content;
         $post->url = $request->url;
         $post->created_by =2;
          $post->save();
          $request->session()->flash("sucessMessage", "Your post was updated sucessfully");
+         Log::info('Post updated');
         return \Redirect::action('PostsController@show', $post->id);
     }
 
@@ -111,8 +125,13 @@ class PostsController extends Controller
     public function destroy(Request $request, $id)
     {
         $post = Post::find($id);
+        if (!$post) {
+            abort(404);
+            Log::error ("Invalid Page");
+        }
 		$post->delete();
          $request->session()->flash("sucessMessage", "Your post was deleted sucessfully");
-		return \Redirect::action('PostsController@index');
+
+        return \Redirect::action('PostsController@index');
     }
 }

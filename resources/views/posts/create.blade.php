@@ -6,6 +6,29 @@
 @stop
 
 @section("content")
+    <style>
+
+        body {
+            background-color: ivory;
+            
+        }
+
+        .content {
+        display: inline-block;
+        font-family: 'lato';
+        }
+
+        h1 {
+            color: green;
+        }
+
+        .title {
+            color: green;
+            font-size: 72px;
+            font-weight: bold;
+            margin-bottom: 40px;
+    </style>
+
     <main class="container">
         <h1> Create a Post </h1>
         <form method="POST" action="{{ action('PostsController@store') }}">
