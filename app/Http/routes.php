@@ -1,5 +1,6 @@
 <?php
 
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -51,4 +52,10 @@ Route::get('orm-test', function ()
     $post1->content  = 'It is super easy to create a new post.';
     $post1->created_by = 1;
     $post1->save();
+});
+
+
+Route::get('namespace', function(){
+    $avenger = new App\avenger\Hawkeye();
+    dd($avenger->shootBadGuys());
 });

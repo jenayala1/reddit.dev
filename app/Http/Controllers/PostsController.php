@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Models\Post;
 
 class PostsController extends Controller
 {
@@ -19,7 +20,7 @@ class PostsController extends Controller
             // $posts = \App\Models\Post::all();
             // $data = [];
             //paginate
-            $posts = \App\Models\Post::paginate(3);
+            $posts = Post::paginate(3);
             $data['posts'] = $posts;
             return view('posts.index', $data);
     }
@@ -44,8 +45,8 @@ class PostsController extends Controller
     public function store(Request $request)
     {
 
-            $this->validate($request, \App\Models\Post::$rules);
-             $post = new \App\Models\Post();
+            $this->validate($request, Post::$rules);
+             $post = new Post();
             $post->title = $request->title;
             $post->url = $request->url;
             $post->content = $request->content;
@@ -62,7 +63,7 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        $post = \App\Models\Post::find($id);
+        $post = Post::find($id);
         $data['post'] = $post;
          return view('posts.show', $data);
     }
@@ -75,7 +76,7 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        $post = \App\Models\Post::find($id);
+        $post = Post::find($id);
         $data['post'] = $post;
          return view('posts.edit', $data);
     }
@@ -90,8 +91,8 @@ class PostsController extends Controller
     public function update(Request $request, $id)
     {
 
-        $this->validate($request, \App\Models\Post::$rules);
-        $post =  \App\Models\Post::find($id);
+        $this->validate($request, Post::$rules);
+        $post =  Post::find($id);
         $post->title = $request->title;
         $post->content = $request->content;
         $post->url = $request->url;
@@ -109,7 +110,7 @@ class PostsController extends Controller
      */
     public function destroy(Request $request, $id)
     {
-        $post = \App\Models\Post::find($id);
+        $post = Post::find($id);
 		$post->delete();
          $request->session()->flash("sucessMessage", "Your post was deleted sucessfully");
 		return \Redirect::action('PostsController@index');
