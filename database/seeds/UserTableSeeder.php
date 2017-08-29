@@ -9,16 +9,20 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        $user1 = new App\User();
-        $user1->email = 'user1@codeup.com';
-        $user1->name = 'Luis';
-        $user1->password = Hash::make('password123');
-        $user1->save();
-
-        $user2 = new App\User();
-        $user2->email = 'user2@codeup.com';
-        $user2->name = 'Cam';
-        $user2->password = Hash::make('password123');
-        $user2->save();
+        DB::statement('SET FOREIGN_KEY_CHECKS=0');
+        DB::table('users')->truncate();
+            $users = [];
+            $faker = Faker\Factory::create();
+            for ($i = 1; $i <= 10; $i++)
+            {
+                $users[] = [
+                    'name'=> $faker->name,
+                    'email'=> $faker->email,
+                    'password'=> $faker->hass::password,
+                    'created_at'=> $faker->dateTime(),
+                    'updated_at'=> $faker->dateTime()
+                ];
+            }
+            DB::table('users')->insert($users);
     }
 }
