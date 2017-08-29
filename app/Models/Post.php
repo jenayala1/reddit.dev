@@ -10,10 +10,7 @@ class Post extends Model
         'title' => 'required|max:100',
         'content' => 'required',
         'url'   => 'required|url'
-        // 'email' =>'required|email',
-        // 'name' => 'required',
-        // 'password' => 'required'
-
+        
 
     );
 }

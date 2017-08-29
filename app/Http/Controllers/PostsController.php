@@ -16,7 +16,8 @@ class PostsController extends Controller
      */
     public function index()
     {
-            $posts = \App\Models\Post::all();
+            // $posts = \App\Models\Post::all();
+            // $data = [];
             //paginate
             $posts = \App\Models\Post::paginate(3);
             $data['posts'] = $posts;
@@ -90,11 +91,11 @@ class PostsController extends Controller
     {
 
         $this->validate($request, \App\Models\Post::$rules);
-        $posts =  App\Models\Post::find($id);
+        $post =  \App\Models\Post::find($id);
         $post->title = $request->title;
         $post->content = $request->content;
         $post->url = $request->url;
-        $post->created_by ="";
+        $post->created_by =2;
          $post->save();
          $request->session()->flash("sucessMessage", "Your post was updated sucessfully");
         return \Redirect::action('PostsController@show', $post->id);

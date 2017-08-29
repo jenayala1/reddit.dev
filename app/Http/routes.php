@@ -51,38 +51,4 @@ Route::get('orm-test', function ()
     $post1->content  = 'It is super easy to create a new post.';
     $post1->created_by = 1;
     $post1->save();
-// add new resource
-   //  $dog = new App\Models\Dog();
-   //  $dog->name = 'Sparky';
-   //  $dog->breed = 'pug';
-   //  $dog->age = 7;
-   // $dog->save();
-
-   // get all records of a resource
-   // $dogs = App\Models\Dog::all();
-   // foreach($dogs as $dog) {
-   //     echo $dog->name;
-   // }
-   //dd($dogs);
-
-//finding a single record:
-    // $dogs = App\Models\Dog::find(1); //by id
-    // echo $dog->name;
-
-// updating a record:
-        // $dogs = App\Models\Dog::find(1); //by id
-        // $dog->name = "Sporty";
-        // $dog->save();
-
-// delete a resouce:
-    // $dogs = App\Models\Dog::find(3); //by id
-    // $dog->delete();
-
-
-    // $post2 = new \App\Models\Post();
-    // $post2->title = 'Eloquent is really easy!';
-    // $post2->url='https://laravel.com/docs/5.1/eloquent';
-    // $post2->content = 'It is super easy to create a new post.';
-    // $post2->created_by = 2;
-    // $post2->save();
 });
