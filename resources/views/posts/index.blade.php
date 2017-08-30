@@ -9,6 +9,7 @@
 
     <main class="container">
         <h1> My Posts </h1>
+        <br>
         @foreach($posts as $post)
         <h2><a  href="{{ action('PostsController@show', $post->id) }}">{{ $post->title }}</a></h2>
         <div>{{ $post->content }}</div>
