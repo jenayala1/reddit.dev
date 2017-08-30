@@ -18,7 +18,7 @@ class PostsTableSeeder extends Seeder
         {
             $posts[] = [
                     'url' => $faker->url,
-                    'title' => $faker->text,
+                    'title' => $faker->catchPhrase,
                     'content' => $faker->text,
                     'created_by' => \App\User::all()->random()->id,
                     'created_at'=> $faker->dateTime(),
