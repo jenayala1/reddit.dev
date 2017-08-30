@@ -17,8 +17,8 @@
         <div>URL: {{ $post->url }}</div>
         <div>POST ID: {{ $post->id }}</div>
         <div> CREATED BY USER ID:  {{ $post->created_by }}</div>
-        <div>DATE CREATED:  {{ $post->created_at->setTimezone('America/Chicago')->format('l, F jS Y @ h:i:s A') }}</div>
-        <div>DATE UPDATED: {{ $post->updated_at->setTimezone('America/Chicago')->format('l, F jS Y @ h:i:s A') }}</div>
+        <div>DATE CREATED:  {{ $post->created_at }}</div>
+        <div>DATE UPDATED: {{ $post->updated_at }}</div>
   	     @endforeach
          {!! $posts->render() !!}
         </form>

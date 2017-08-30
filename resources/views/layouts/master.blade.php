@@ -29,11 +29,9 @@
 
             .textarea {
             display: inline-block;
-
             }
 
         </style>
-
         <div class="container">
             <div class="navbar-header"><a class="navbar-brand" href="{{ action('PostsController@index') }}">Reddit Home</a>
                 @if (Auth::check())

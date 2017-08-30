@@ -10,6 +10,7 @@ use App\Models\Post;
 use Log;
 use Auth;
 
+
 class PostsController extends Controller
 {
 
