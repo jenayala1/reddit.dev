@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Database\Seeder;
+use Faker\Factory;
+
 class UserTableSeeder extends Seeder
 {
     /**
@@ -9,8 +12,7 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::statement('SET FOREIGN_KEY_CHECKS=0');
-        DB::table('users')->truncate();
+
             $users = [];
             $faker = Faker\Factory::create();
             for ($i = 1; $i <= 10; $i++)
@@ -18,7 +20,7 @@ class UserTableSeeder extends Seeder
                 $users[] = [
                     'name'=> $faker->name,
                     'email'=> $faker->email,
-                    'password'=> $faker->hass::password,
+                    'password'=> Hash::make('password'),
                     'created_at'=> $faker->dateTime(),
                     'updated_at'=> $faker->dateTime()
                 ];
