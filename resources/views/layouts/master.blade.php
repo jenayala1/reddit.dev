@@ -27,22 +27,29 @@
                 text-align: center;
             }
 
-            .content {
+            .textarea {
             display: inline-block;
-            font-family: 'lato';
             }
 
         </style>
+
         <div class="container">
             <div class="navbar-header"><a class="navbar-brand" href="{{ action('PostsController@index') }}">Reddit Home</a>
                 <a class="navbar-brand" href="{{ action('PostsController@create') }}">Create Posts</a>
                 <a class="navbar-brand" href="{{ action('PostsController@edit') }}">Edit Posts</a>
-                <a class="navbar-brand">Login</a>
-                <a class="navbar-brand">Logout</a>
+                @if (Auth::check())
+                    <a class="navbar-brand" href="{{ action('Auth\AuthController@getLogout') }}">Logout</a>
+                @else
+                        <a class="navbar-brand" href="{{ action('Auth\AuthController@getLogin') }}">Login</a>
+                        <a class="navbar-brand" href="{{ action('Auth\AuthController@getRegister') }}">Register</a>
+                @endif
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-menubuilder"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
                 </button>
             </div>
         </div>
+        <br>
+        {{ (Auth::check()) ? "User is logged in" : "User is logged out" }}
+        {{ Auth::id() }}
         <br>
         @if (session()->has('successMessage'))
             <div class="alert alert-success">{{ session('successMessage') }}</div>

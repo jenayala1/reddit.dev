@@ -8,9 +8,15 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Log;
+use Auth;
 
 class PostsController extends Controller
 {
+
+    public function __construct()
+    {
+    $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -52,7 +58,7 @@ class PostsController extends Controller
             $post->title = $request->title;
             $post->url = $request->url;
             $post->content = $request->content;
-            $post->created_by = 1;
+            $post->created_by = Auth::id();
             $post->save();
             $request->session()->flash("sucessMessage", "Your post was saved sucessfully");
             Log::info($post);
