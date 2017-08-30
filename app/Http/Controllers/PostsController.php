@@ -115,7 +115,7 @@ class PostsController extends Controller
         $post->title = $request->title;
         $post->content = $request->content;
         $post->url = $request->url;
-        $post->created_by =2;
+        $post->created_by =Auth::id();
          $post->save();
          $request->session()->flash("sucessMessage", "Your post was updated sucessfully");
          Log::info('Post updated');

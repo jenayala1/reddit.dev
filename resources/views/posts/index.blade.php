@@ -1,7 +1,7 @@
 @extends("layouts.master")
 
 @section("title")
-    <title> My Posts! </title>
+    <title> All Our Posts! </title>
 
 @stop
 
