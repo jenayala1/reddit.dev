@@ -35,7 +35,7 @@
         <div class="container">
             <div class="navbar-header"><a class="navbar-brand" href="{{ action('PostsController@index') }}">Reddit Home</a>
                 @if (Auth::check())
-                    <a class="navbar-brand" href="{{ action('PostsController@create') }}">Create Posts</a>
+                    <a class="navbar-brand" href="{{ action('PostsController@create') }}">Create Post</a>
                     <a class="navbar-brand" href="{{ action('Auth\AuthController@getLogout') }}">Logout</a>
                 @else
                     <a class="navbar-brand" href="{{ action('Auth\AuthController@getLogin') }}">Login</a>
@@ -45,6 +45,7 @@
                 </button>
             </div>
         </div>
+
         <br>
         {{ (Auth::check()) ? "User is logged in" : "User is logged out" }}
         {{ Auth::id() }}
@@ -56,6 +57,7 @@
         @if (session()->has('errorMessage'))
             <div class="alert alert-error">{{ session('errorMessage') }}</div>
         @endif
+
         @yield('content')
 
         <footer>
