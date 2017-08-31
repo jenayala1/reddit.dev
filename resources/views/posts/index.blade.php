@@ -22,7 +22,7 @@
             <div>DATE UPDATED: {{ $post->updated_at }}</div>
         </div>
   	     @endforeach
-    
+
         </form>
     </main>
 

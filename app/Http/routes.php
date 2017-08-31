@@ -18,6 +18,8 @@ Route::get('/builder', 'PostsController@testBuilder');
 Route::get('/', 'HomeController@showWelcome');
 
 Route::resource('posts', 'PostsController');
+Route::resource('votes', 'VotesController');
+Route::resource('users', 'UsersController');
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');

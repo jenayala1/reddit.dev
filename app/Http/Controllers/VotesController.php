@@ -7,24 +7,16 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class UsersController extends Controller
+class VotesController extends Controller
 {
-    /*** Display a listing of the resource.*
-     * @return \Illuminate\Http\Response*/
-
-    public function index(Request $request)
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
     {
-        $users = \App\User::all();
-        if($request->has('q')) {
-            $search = $request->q;
-
-            $users = User::where('name', 'LIKE', "%search%")
-            ->orwhere('email', 'like', "%$search%")
-            ->orwhere('created_at', 'like', "%$search%")
-            ->get();
-        }
-        $data['users'] = $users;
-        return view('users.profile', $users);
+        //
     }
 
     /**

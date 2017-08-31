@@ -7,15 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Vote extends Model
 {
-    public static function updateOrCreate(array $attributes, array $values = [])
+    public function getVote($vote)
     {
-        $instance = static::firstOrNew($attributes);
-        $instance->fill($values)->save();
-
-        return $instance;
+        if(
     }
-
-
 
 
         //relationship to user

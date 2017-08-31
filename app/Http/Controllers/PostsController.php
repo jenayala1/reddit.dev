@@ -73,10 +73,6 @@ class PostsController extends Controller
             $post->content = $request->content;
             $post->created_by = Auth::id();
 
-            $vote = new Vote();
-            $vote->user()->associate($user);
-            $post->votes()->save($vote);
-            
             $post->save();
 
             $request->session()->flash("sucessMessage", "Your post was saved sucessfully");
