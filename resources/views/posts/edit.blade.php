@@ -8,20 +8,23 @@
 @section("content")
 
     <main class="container">
-        <h1> Edit Post </h1>
+        <h1> EDIT POST</h1>
+        <br>
         <form method="POST" action="{{ action('PostsController@update', $post->id) }}">
             {!! csrf_field() !!}
             <div class="form-group">
                 <div>
                     {!! $errors->first('title', '<span class="help-block">:message</span>') !!}
-                    <label for="title">Title</label>
+                    <label for="title">TITLE</label>
                     <input type="text" id="title" name="title" class="form-control" value="{{ $post->title }}" placeholder="Post Title">
             </div>
+            <br>
             <div class="form-group">
                 {!! $errors->first('content', '<span class="help-block">:message</span>') !!}
-                <label for="title">Content </label>
+                <label for="title"> BLOG CONTENT </label>
                 <input type="textarea" id="content" name="content" class="form-control" value="{{ $post->content  }}" placeholder="Enter Content">
             </div>
+            <br>
             <div class="form-group">
                 {!! $errors->first('url', '<span class="help-block">:message</span>') !!}
                 <label for="url"> URL </label>

@@ -16,14 +16,12 @@ class User extends BaseModel implements AuthenticatableContract,
                                     CanResetPasswordContract
 {
     use Authenticatable, Authorizable, CanResetPassword;
-
     /**
      * The database table used by the model.
      *
      * @var string
      */
     protected $table = 'users';
-
     /**
      * The attributes that are mass assignable.
      *
@@ -38,9 +36,19 @@ class User extends BaseModel implements AuthenticatableContract,
      */
     protected $hidden = ['password', 'remember_token'];
 
-
     public function setPasswordAttribute($value)
     {
     $this->attributes['password'] = \Hash::make($value);
     }
+
+    public function posts()
+    {
+    return $this->hasMany('App\Models\Post', 'created_by');
+    }
+
+    public function votes()
+    {
+    return $this->hasMany('App\Models\Vote', 'vote_id');
+    }
+
 }

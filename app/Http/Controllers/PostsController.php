@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+
 use Log;
+use DB;
 use Auth;
 
 
@@ -16,22 +18,31 @@ class PostsController extends Controller
 
     public function __construct()
     {
-    $this->middleware('auth',['except'=>['index', 'show']]);
+    $this->middleware('auth',['except'=>['index', 'show', 'testBuilder']]);
     }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-            // $posts = \App\Models\Post::all();
+            //$posts = Post::all();
             // $data = [];
             //paginate
-            $posts = Post::paginate(3);
-            $data['posts'] = $posts;
-            Log::info('Page visited by a user');
-            return view('posts.index', $data);
+            //$posts = Post::paginate(6);
+
+                $posts = Post::with('user')
+                    ->orderBy('created_at', 'DESC')->get();
+                $data['posts'] = $posts;
+
+                if ($request->has('q')) {
+                    $q = $request->q;
+                    $posts = Post::search($q);
+                }
+                Log::info('Page visited by a user');
+
+                return view('posts.index', $data);
     }
 
     /**
@@ -55,12 +66,19 @@ class PostsController extends Controller
     {
 
             $this->validate($request, Post::$rules);
+
              $post = new Post();
             $post->title = $request->title;
             $post->url = $request->url;
             $post->content = $request->content;
             $post->created_by = Auth::id();
+
+            $vote = new Vote();
+            $vote->user()->associate($user);
+            $post->votes()->save($vote);
+            
             $post->save();
+
             $request->session()->flash("sucessMessage", "Your post was saved sucessfully");
             Log::info($post);
             return \Redirect::action('PostsController@index');
@@ -116,19 +134,17 @@ class PostsController extends Controller
         $post->title = $request->title;
         $post->content = $request->content;
         $post->url = $request->url;
-        $post->created_by =Auth::id();
+        $post->created_by = Auth::id();
          $post->save();
          $request->session()->flash("sucessMessage", "Your post was updated sucessfully");
          Log::info('Post updated');
         return \Redirect::action('PostsController@show', $post->id);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
+    /*** Remove the specified resource from storage.*
      * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+     * @return \Illuminate\Http\Response*/
+
     public function destroy(Request $request, $id)
     {
         $post = Post::find($id);
@@ -141,4 +157,11 @@ class PostsController extends Controller
 
         return \Redirect::action('PostsController@index');
     }
+    public function postVote(Request $request, $id)
+    {
+        echo "Thank you for your vote!";
+        return \Redirect::action('PostsController@index');
+
+    }
+
 }

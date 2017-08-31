@@ -7,31 +7,44 @@
 
 @section("content")
 <style>
-
+    label {
+        font-family: "play";
+        font-size: 20px;
+        margin-left: 10px;
+        padding-right: 10px;
+    }
+    h2 {
+        text-align: center;
+        padding-bottom: 20 px;
+    }
 </style>
 
 <form method="POST" action="/auth/register">
     {!! csrf_field() !!}
-<h1> Register with Us! </h1>
+<h2> PLEASE REGISTER TO CREATE A POST </h2>
+<br>
     <div>
-        Name
+        <label for="name"> NAME  </label>
         <input type="text" name="name" value="{{ old('name') }}">
     </div>
+    <br>
     <div>
-        Email
+        <label for="email"> EMAIL  </label>
         <input type="email" name="email" value="{{ old('email') }}">
     </div>
+    <br>
     <div>
-        Password
+        <label for="password"> PASSWORD  </label>
         <input type="password" name="password">
     </div>
+    <br>
     <div>
-        Confirm Password
+        <label for="confirm_password"> CONFIRM PASSWORD   </label>
         <input type="password" name="password_confirmation">
     </div>
+    <br>
     <div>
         <button class="btn btn-primary" type="submit"> REGISTER! </button>
     </div>
 </form>
-
 @stop

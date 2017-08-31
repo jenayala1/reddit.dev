@@ -12,6 +12,9 @@
 |
 */
 
+//Test route for query builder lecture:
+Route::get('/builder', 'PostsController@testBuilder');
+
 Route::get('/', 'HomeController@showWelcome');
 
 Route::resource('posts', 'PostsController');
@@ -29,7 +32,7 @@ Route::get('/logout', function(){
     Auth::logout();
 });
 
-
+Route::resource('/users', 'UsersController');
 
 Route::get('/uppercase/{word}', 'HomeController@uppercase');
 Route::get('/lowercase/{word}', 'HomeController@lowercase');
@@ -51,22 +54,22 @@ Route::resource('dogs', 'DogsController');
 
 Route::get('create-user', function() {
     $user = new \App\User();
- 	$user->name = "admin";
- 	$user->email = "admin@codeup.com";
+ 	$user->name = "Jen-A";
+ 	$user->email = "jena@email.com";
  	$user->password = "password";
  	$user->save();
 
 });
 
-Route::get('orm-test', function ()
-{
-    $post1 = new \App\Models\Post();
-    $post1->title = 'Eloquent is awesome!';
-    $post1->url='https://laravel.com/docs/5.1/eloquent';
-    $post1->content  = 'It is super easy to create a new post.';
-    $post1->created_by = 1;
-    $post1->save();
-});
+// Route::get('orm-test', function ()
+// {
+//     $post1 = new \App\Models\Post();
+//     $post1->title = 'Eloquent is awesome!';
+//     $post1->url='https://laravel.com/docs/5.1/eloquent';
+//     $post1->content  = 'It is super easy to create a new post.';
+//     $post1->created_by = 1;
+//     $post1->save();
+// });
 
 
 Route::get('namespace', function(){

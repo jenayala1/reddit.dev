@@ -11,44 +11,68 @@
     </head>
     <body>
         <style>
-            .navbar-header {
-                background-color: lightgrey;
-                color: white;
-            }
-            .title {
-                color: lightseagreen;
-                font-size: 72px;
-                font-weight: bold;
-                margin-bottom: 40px;
-            }
-
             h1 {
-                color: grey;
+                font-family: "play";
+                font-size: 48px;
+                font-weight: bold;
+                color: darkslategrey;
                 text-align: center;
+                padding-bottom: 20px;
             }
 
-            .textarea {
+            h2 {
+                font-family: "play";
+                font-size: 36px;
+            }
+
+            label {
+                font-family: "play";
+                font-size: 30px;
+            }
+
+            a {
+                font-size: 20px;
+                color: dimgray;
+                font-weight: bold;
+            }
+            body {
+                background-color: mintcream;
+            }
+            #content {
             display: inline-block;
+            height: auto;
             }
 
+            .text-box {
+                text-align: left;
+                margin-left: 15px;
+                font-size: 20px;
+                font-family: "oswald";
+            }
+
+            .blog-details {
+                font-size: 14px;
+                margin-left: 20px;
+                color: dimgrey;
+                font-family: "oswald";
+            }
+            .auth-status {
+                margin-right: auto;
+                font-family: 'oswald';
+                font-size: 14px;
+                color: dimgrey;
+            }
         </style>
-        <div class="container">
-            <div class="navbar-header"><a class="navbar-brand" href="{{ action('PostsController@index') }}">Reddit Home</a>
-                @if (Auth::check())
-                    <a class="navbar-brand" href="{{ action('PostsController@create') }}">Create Post</a>
-                    <a class="navbar-brand" href="{{ action('Auth\AuthController@getLogout') }}">Logout</a>
-                @else
-                    <a class="navbar-brand" href="{{ action('Auth\AuthController@getLogin') }}">Login</a>
-                    <a class="navbar-brand" href="{{ action('Auth\AuthController@getRegister') }}">Register</a>
-                @endif
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-menubuilder"><span class="sr-only">Toggle navigation</span>
-                </button>
-            </div>
-        </div>
+        @include('layouts.partials._navbar')
 
         <br>
-        {{ (Auth::check()) ? "User is logged in" : "User is logged out" }}
-        {{ Auth::id() }}
+        <div class="auth-status">
+            <span> User Authentication: </span>
+                {{ (Auth::check()) ? "User is logged in" : "User is logged out" }}
+            <br>
+            <span> User ID: </span>
+                {{ Auth::id() }}
+        </div>
         <br>
         @if (session()->has('successMessage'))
             <div class="alert alert-success">{{ session('successMessage') }}</div>
