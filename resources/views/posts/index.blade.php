@@ -22,8 +22,9 @@
             <div>DATE UPDATED: {{ $post->updated_at }}</div>
         </div>
   	     @endforeach
-
+         <input name="tags" id="tags" value="tags" />
         </form>
     </main>
-
+    <script src="jquery.tagsinput.js"></script>
+    <link rel="stylesheet" type="text/css" href="jquery.tagsinput.css" />
 @stop

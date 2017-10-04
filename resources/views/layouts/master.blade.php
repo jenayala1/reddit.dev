@@ -63,7 +63,7 @@
                 color: dimgrey;
             }
         </style>
-        @include('layouts.partials._navbar')
+        @include('layouts.partials._navbar2')
 
         <br>
         <div class="auth-status">

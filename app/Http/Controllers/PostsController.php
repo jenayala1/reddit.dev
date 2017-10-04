@@ -67,7 +67,7 @@ class PostsController extends Controller
 
             $this->validate($request, Post::$rules);
 
-             $post = new Post();
+            $post = new Post();
             $post->title = $request->title;
             $post->url = $request->url;
             $post->content = $request->content;
