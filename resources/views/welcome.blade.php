@@ -3,7 +3,7 @@
 @extends('layouts.master')
 
 @section('title')
-     @include('layouts.partials._navbar')
+
     <title>Jennifer Ayala</title>
         <head>
             <style>
