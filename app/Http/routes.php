@@ -51,6 +51,17 @@ Route::get('/double/{num}', 'SampleController@doubleNum');
 Route::get('/triple/{num}', 'SampleController@tripleNum');
 Route::get('/zero/{num}', 'HomeController@resetToZero');
 
+Route::get('/home', function () {
+    return view('welcome');
+});
+
+Route::get('/contact', function () {
+    return view('contact');
+});
+
+Route::get('/resume', function () {
+    return view('resume');
+});
 
 Route::resource('dogs', 'DogsController');
 
