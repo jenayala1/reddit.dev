@@ -13,6 +13,8 @@
 		<style>
 			html, body {
 				height: 100%;
+				color: black;
+				font-family: "Lato";
 			}
 			body {
 				margin: 0;
@@ -42,6 +44,12 @@
 				font-size: 22px;
 				font-family: 'Lato';
 				text-align: center;
+				padding-bottom: 20px;
+			}
+			.main {
+				text-align: left;
+				vertical-align: middle;
+				color: black;
 				padding-bottom: 20px;
 			}
 			.container {
