@@ -48,8 +48,8 @@
 			}
 			.main {
 				text-align: left;
-				vertical-align: middle;
 				color: black;
+				margin-top: 20px;
 				padding-bottom: 20px;
 			}
 			.container {
@@ -100,7 +100,7 @@
 					<a href="https://www.linkedin.com/in/jennifer-ayala-sa">  jennifer-ayala-sa </a>
 				</div>
 			</div>
-			<br>
+		<br>
 		<br>
 		<br>
 		<div id="main">
