@@ -96,6 +96,8 @@
 			</div>
 			<br>
 		</header>
+		<br>
+		<br>
 		<div id="main">
 			<div class="section-header"> SUMMARY </div>
 					<div class="summary">INDUSTRIOUS LEADERSHIP</div>
