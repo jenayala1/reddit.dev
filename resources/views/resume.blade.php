@@ -10,6 +10,72 @@
 		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 		<link href="css/jen-personal.css" rel="stylesheet">
 		<title>Resume</title>
+		<style>
+			html, body {
+				height: 100%;
+			}
+			body {
+				margin: 0;
+				padding: 0;
+				width: 100%;
+				display: table;
+				font-weight: 100;
+				font-family: 'Lato';
+				color: black;
+			}
+
+			.text {
+				color: black;
+				font-size: 18px;
+				padding: 20px;
+				font-family: "play";
+			}
+			.text2 {
+				color: black;
+				font-size: 14px;
+				padding: 20px;
+				font-family: "play";
+			}
+			.section-header2{
+				color: black;
+				font-weight: bold;
+				font-size: 22px;
+				font-family: 'Lato';
+				text-align: center;
+				padding-bottom: 20px;
+			}
+			.container {
+				text-align: left;
+				vertical-align: middle;
+				color: black;
+			}
+			.box {
+				color: black;
+			}
+			.col-lg-3{
+				margin-right: 50px;
+				padding-left: 40px;
+				margin-bottom: 40px;
+				color: black;
+			}
+			.content {
+				text-align: left;
+				display: inline-block;
+				color: black;
+			}
+			.title {
+				font-size: 96px;
+				padding: 20px;
+			}
+			h4 {
+				padding: 20px;
+			}
+			.thumbnail {
+				padding: 20px;
+				color: black;
+				font-size: 14px;
+			}
+		</style>
 	</head>
 @stop
 
