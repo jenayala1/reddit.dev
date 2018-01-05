@@ -81,20 +81,18 @@
 
 @section('content')
 	<body>
-		<header>
 			<div class="header1"> Jennifer Ayala </div>
-				<div class="headerd"> CONTACT #
+				<div class="headerd">
 				 	<a href="tel:+2104592396"> 210-459-2396 </a>
 				</div>
-				<div class="headerd"> EMAIL:
+				<div class="headerd">
 					 <a href="mailto:jenayala1@gmail.com"> jenayala1@gmail.com </a>
 				</div>
-				<div class="headerd"> LINKEDIN:
+				<div class="headerd">
 					<a href="https://www.linkedin.com/in/jennifer-ayala-sa">  jennifer-ayala-sa </a>
 				</div>
 			</div>
 			<br>
-		</header>
 		<br>
 		<br>
 		<div id="main">
