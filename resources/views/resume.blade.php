@@ -36,7 +36,7 @@
 				padding: 20px;
 				font-family: "play";
 			}
-			.section-header2{
+			.header1{
 				color: black;
 				font-weight: bold;
 				font-size: 22px;
@@ -78,7 +78,6 @@
 		</style>
 	</head>
 @stop
-
 
 @section('content')
 	<body>
