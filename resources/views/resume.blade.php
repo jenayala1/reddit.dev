@@ -34,11 +34,13 @@
 				padding: 20px;
 				font-family: "play";
 			}
-			.text2 {
+			.headerd{
 				color: black;
-				font-size: 14px;
+				font-size: 18px;
 				padding: 20px;
 				font-family: "play";
+				position: relative;
+				text-align: left;
 			}
 			.header1{
 				color: black;
@@ -53,6 +55,7 @@
 				color: black;
 				margin-top: 20px;
 				padding-bottom: 20px;
+				font-family: "Play";
 			}
 			.container {
 				text-align: left;
