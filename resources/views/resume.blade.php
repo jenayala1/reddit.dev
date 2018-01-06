@@ -25,6 +25,7 @@
 				font-family: 'Lato';
 				color: black;
 				padding-top: 20px;
+				background-color: ivory;
 			}
 
 			.text {
@@ -90,7 +91,7 @@
 
 @section('content')
 	<body>
-			<div class="header1"> Jennifer Ayala </div>
+			<div id="header1"> Jennifer Ayala </div>
 				<div class="headerd">
 				 	<a href="tel:+2104592396"> 210-459-2396 </a>
 				</div>
