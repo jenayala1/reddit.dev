@@ -22,9 +22,10 @@
 				width: 100%;
 				display: table;
 				font-weight: 100;
-				font-family: 'Lato';
+				font-family: 'Play';
 				color: black;
 				padding-top: 20px;
+				margin-left: 10px;
 				background-color: ivory;
 			}
 
@@ -54,6 +55,7 @@
 				text-align: left;
 				color: black;
 				margin-top: 20px;
+				margin-left: 10px;
 				padding-bottom: 20px;
 				font-family: "Play";
 			}
