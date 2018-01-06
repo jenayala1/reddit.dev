@@ -24,6 +24,7 @@
 				font-weight: 100;
 				font-family: 'Lato';
 				color: black;
+				padding-top: 20px;
 			}
 
 			.text {
