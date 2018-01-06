@@ -18,6 +18,7 @@
                     font-weight: 100;
                     font-family: 'Lato';
                     color: black;
+                    background-color: ivory;
                 }
 
                 .text {
